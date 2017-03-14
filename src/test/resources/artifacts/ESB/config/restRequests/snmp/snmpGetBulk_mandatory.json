@@ -1,0 +1,11 @@
+{
+  "host": "%s(host)",
+  "port": "%s(port)",
+  "snmpVersion": "%s(snmpVersion)",
+  "oids": "%s(oids)",
+  "maxRepetition": "%s(maxRepetition)",
+  "nonRepeater": "%s(nonRepeater)",
+  "community": "%s(community)",
+  "retries": "%s(retries)",
+  "timeout": "%s(timeout)"
+}
