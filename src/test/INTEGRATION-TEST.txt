@@ -1,28 +1,27 @@
-Product: Integration tests for WSO2 ESB SNMP connector
+Product: Integration tests for WSO2 EI SNMP connector
 
 Pre-requisites:
 
  - Maven 3.x
- - Java 1.7
+ - Java 1.8
  - The org.wso2.esb.integration.integration-base project is required. The test suite has been configured to download this project automatically.
    If the automatic download fails, download the following project and compile it using the mvn clean install command to update your local repository:
    https://github.com/wso2-extensions/esb-integration-base
 
 Tested Platform: 
 
- - UBUNTU 14.04
- - WSO2 ESB 5.0.0
-
+ - UBUNTU 16.04 LTS
+ - WSO2 EI 6.2.0
 
 STEPS:
 
- 1. Download ESB 5.0.0 from official website and extract the ESB and add "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh.
+ 1. Download EI 6.2.0 from official website and extract the EI and add "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {EI_HOME}/bin/integrator.sh.
 
- 2. Download snmp4j-2.5.5.jar(http://www.snmp4j.org/html/download.html) and add it to the <ESB_HOME>/repository/components/lib directory.
+ 2. Download snmp4j-2.5.5.jar(http://www.snmp4j.org/html/download.html) and add it to the <EI_HOME>/lib directory.
 
- 3. Compress modified ESB and copy that zip file in to location "{SNMP_CONNECTOR_HOME}/repository/".
+ 3. Compress modified EI and copy that zip file in to location "{SNMP_CONNECTOR_HOME}/repository/".
 
- 4. Update the activecollab properties file at location "{SNMP_CONNECTOR_HOME}/src/test/resources/artifacts/ESB/connector/config" as below.
+ 4. Update the SNMP properties file at location "{SNMP_CONNECTOR_HOME}/src/test/resources/artifacts/ESB/connector/config" as below.
      
         i)      host            -   Address of the target device.
     	ii)     port            -   The Port number of SNMP.
@@ -38,4 +37,4 @@ STEPS:
     	xi)     nonRepeater     -   Number of non repeater variable bindings.
 
  5. Navigate to "<SNMP_CONNECTOR_HOME>" and run the following command.
-         $ mvn clean install
+         $ mvn clean install -Dskip-tests=false
