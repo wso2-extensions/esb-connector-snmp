@@ -42,7 +42,9 @@ public class SnmpConnectorIntegrationTest extends ConnectorIntegrationTestBase {
 	 */
 	@BeforeClass(alwaysRun = true)
 	public void setEnvironment() throws Exception {
-		init("snmp-connector-1.0.1-SNAPSHOT");
+		String connectorName = System.getProperty("connector_name") + "-connector-" +
+				System.getProperty("connector_version") + ".zip";
+		init(connectorName);
 		esbRequestHeadersMap.put("Accept-Charset", "UTF-8");
 		esbRequestHeadersMap.put("Content-Type", "application/json");
 		esbRequestHeadersMap.put("Accept", "application/json");
