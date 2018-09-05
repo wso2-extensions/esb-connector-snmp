@@ -34,5 +34,9 @@
             <file>snmpGetNext.xml</file>
             <description>snmp sms message wso2 connector method</description>
         </component>
+        <component name="snmpTrap">
+            <file>snmpTrap.xml</file>
+            <description>snmp sms message wso2 connector method</description>
+        </component>
     </subComponents>
 </component>

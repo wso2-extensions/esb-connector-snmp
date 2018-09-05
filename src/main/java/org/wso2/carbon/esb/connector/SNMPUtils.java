@@ -30,8 +30,10 @@ import org.snmp4j.Target;
 import org.snmp4j.mp.SnmpConstants;
 import org.snmp4j.smi.OID;
 import org.snmp4j.smi.OctetString;
+import org.snmp4j.smi.TcpAddress;
 import org.snmp4j.smi.UdpAddress;
 import org.snmp4j.smi.VariableBinding;
+
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -60,14 +62,23 @@ public class SNMPUtils {
 		String community = (String) messageContext.getProperty(SNMPConstants.COMMUNITY);
 		String retries = (String) messageContext.getProperty(SNMPConstants.RETRIES);
 		String timeout = (String) messageContext.getProperty(SNMPConstants.TIMEOUT);
+		String isTcp = (String) messageContext.getProperty(SNMPConstants.IS_TCP);
 
 		CommunityTarget target = new CommunityTarget();
 		target.setCommunity(new OctetString(community));
-		target.setAddress(new UdpAddress(host + SNMPConstants.COMBINER + port));
+		if (Boolean.parseBoolean(isTcp)) {
+			target.setAddress(new TcpAddress(host + SNMPConstants.COMBINER + port));
+		} else {
+			target.setAddress(new UdpAddress(host + SNMPConstants.COMBINER + port));
+		}
 		if (StringUtils.isEmpty(snmpVersion) || snmpVersion.equals(SNMPConstants.SNMP_VERSION2C)) {
 			target.setVersion(SnmpConstants.version2c);
 		} else if (snmpVersion.equals(SNMPConstants.SNMP_VERSION1)) {
 			target.setVersion(SnmpConstants.version1);
+		} else	{
+			if (log.isDebugEnabled()) {
+				log.info("SNMP connector doesn't support SNMP version other than 1 and 2c");
+			}
 		}
 		if (StringUtils.isEmpty(retries)) {
 			target.setRetries(Integer.parseInt(SNMPConstants.DEFAULT_RETRIES));
@@ -108,7 +119,6 @@ public class SNMPUtils {
 	 * @param messageContext The message context that is processed by a handler in the handle method
 	 * @param element        The OMElement
 	 */
-
 	public static void preparePayload(MessageContext messageContext, OMElement element) {
 		SOAPBody soapBody = messageContext.getEnvelope().getBody();
 		for (Iterator itr = soapBody.getChildElements(); itr.hasNext(); ) {
