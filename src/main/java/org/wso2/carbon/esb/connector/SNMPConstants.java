@@ -81,4 +81,14 @@ public class SNMPConstants {
 	public static final String NON_REPEATER = "nonRepeater";
 	// Constant for data type.
 	public static final String TYPE = "type";
+	// Constant for protocol type.
+	public static final String IS_TCP = "isTcp";
+	// Constant for trap message oid.
+	public static final String TRAP_OIDS = "trapOids";
+	// Constant for host of the source sending the trap.
+	public static final String SNMP_TRAP_HOST = "trapHost";
+	// Constant for trap response start tag.
+	public static final String TRAP_RESPONSE_START_TAG = "<result><Success>";
+	// Constant for trap response end tag.
+	public static final String TRAP_RESPONSE_END_TAG = "</Success></result>";
 }
