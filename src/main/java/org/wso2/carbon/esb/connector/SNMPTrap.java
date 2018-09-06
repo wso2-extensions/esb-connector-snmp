@@ -82,19 +82,19 @@ public class SNMPTrap extends AbstractConnector implements Connector {
             snmp = new Snmp(transport);
             snmp.send(pdu, SNMPUtils.getTarget(messageContext));
             if (log.isDebugEnabled()) {
-                log.debug("Trap message send successfully to " + host);
+                log.debug(String.format("Trap message send successfully to %s ", host));
             }
             generateOutput(messageContext, true);
         } catch (IOException e) {
             generateOutput(messageContext, false);
-            handleException("Error in Sending the trap message to " + host , (MessageContext) e);
+            handleException(String.format("Error in Sending the trap message to %s", host) , (MessageContext) e);
         } finally {
             try {
                 if (snmp != null) {
                     snmp.close();
                 }
             } catch (IOException e) {
-                handleException("Error in closing the snmp : " + e.getMessage(), e, messageContext);
+                handleException(String.format("Error in closing the snmp : %s", e.getMessage()), e, messageContext);
             }
         }
     }
@@ -158,7 +158,7 @@ public class SNMPTrap extends AbstractConnector implements Connector {
             }
         } catch (JSONException e) {
             generateOutput(messageContext, false);
-            handleException("Error occured while casting String to JsonObject: " + trapOids.toString(),
+            handleException(String.format("Error occured while casting String to JsonObject: %s ", trapOids),
                     (MessageContext) e);
         }
     }
@@ -177,7 +177,7 @@ public class SNMPTrap extends AbstractConnector implements Connector {
             element = SNMPUtils.transformMessages(response);
             SNMPUtils.preparePayload(messageContext, element);
         } catch (XMLStreamException e) {
-            handleException("Error occurred while transforming response [" + response + "] to XML. " ,
+            handleException(String.format("Error occurred while transforming response [%s] to XML. ", response),
                     (MessageContext) e);
         }
     }

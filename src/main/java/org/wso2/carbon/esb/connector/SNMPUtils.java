@@ -34,7 +34,6 @@ import org.snmp4j.smi.TcpAddress;
 import org.snmp4j.smi.UdpAddress;
 import org.snmp4j.smi.VariableBinding;
 
-
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.Arrays;
