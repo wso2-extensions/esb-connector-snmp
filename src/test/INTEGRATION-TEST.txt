@@ -11,17 +11,19 @@ Pre-requisites:
 Tested Platform: 
 
  - UBUNTU 16.04 LTS
- - WSO2 EI 6.2.0
+ - WSO2 EI 6.4.0
 
 STEPS:
 
- 1. Download EI 6.2.0 from official website and extract the EI and add "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {EI_HOME}/bin/integrator.sh.
+ 1. Download EI 6.4.0 from official website and extract the EI.
 
  2. Download snmp4j-2.5.5.jar(http://www.snmp4j.org/html/download.html) and add it to the <EI_HOME>/lib directory.
 
  3. Compress modified EI and copy that zip file in to location "{SNMP_CONNECTOR_HOME}/repository/".
 
- 4. Update the SNMP properties file at location "{SNMP_CONNECTOR_HOME}/src/test/resources/artifacts/ESB/connector/config" as below.
+ 4. Install and configure snmpd and snmp using this link http://www.it-slav.net/blogs/2009/02/05/install-and-configure-snmp-on-ubuntu/
+
+ 5. Update the SNMP properties file at location "{SNMP_CONNECTOR_HOME}/src/test/resources/artifacts/ESB/connector/config" as below.
      
         i)      host            -   Address of the target device.
     	ii)     port            -   The Port number of SNMP.
@@ -36,5 +38,5 @@ STEPS:
     	x)      maxRepetition   -   Maximum repetitions of repeatable variable bindings.
     	xi)     nonRepeater     -   Number of non repeater variable bindings.
 
- 5. Navigate to "<SNMP_CONNECTOR_HOME>" and run the following command.
+ 6. Navigate to "<SNMP_CONNECTOR_HOME>" and run the following command.
          $ mvn clean install -Dskip-tests=false
