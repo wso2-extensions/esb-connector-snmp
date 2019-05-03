@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.carbon.esb.connector</groupId>
     <artifactId>org.wso2.carbon.esb.connector.SNMP</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>WSO2 Carbon - Connector For SNMP</name>
     <url>http://wso2.org</url>
@@ -29,7 +29,7 @@
         <axis2.osgi.version.range>1.7.1</axis2.osgi.version.range>
         <axiom.osgi.version.range>1.2.5</axiom.osgi.version.range>
         <connector.name>snmp</connector.name>
-        <product.ei.version>6.5.0</product.ei.version>
+        <product.ei.version>6.5.0-m5</product.ei.version>
         <carbon.kernel.version>4.4.38</carbon.kernel.version>
         <automation.framework.utils.version>4.4.2</automation.framework.utils.version>
         <automation.framework.version>4.4.3</automation.framework.version>
