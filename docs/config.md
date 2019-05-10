@@ -1,4 +1,4 @@
-# Configuring Salesforce Bulk Operations
+# Configuring SNMP Operations
 
 [[Initializing the connector]](#initializing-the-connector)
 
