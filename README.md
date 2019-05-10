@@ -1,7 +1,7 @@
 
 #SNMP EI Connector
 
-The SNMP [Connector](https://docs.wso2.com/display/EI650/Working+with+Connectors) allows you to monitor and configure network components such as servers, routers, switches or printers via WSO2 ESB. This connector supports Simple Network Management Protocol(SNMP) Version 2, and uses the snmp4j library, which is an enterprise class free open source SNMP implementation for Java™ SE.
+The SNMP [Connector](https://docs.wso2.com/display/EI650/Working+with+Connectors) allows you to monitor and configure network components such as servers, routers, switches or printers via WSO2 EI. This connector supports Simple Network Management Protocol(SNMP) Version 2, and uses the snmp4j library, which is an enterprise class free open source SNMP implementation for Java™ SE.
 
 SNMP is a popular protocol used for managing devices on IP networks.
 
