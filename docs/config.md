@@ -25,4 +25,5 @@ Add the following <snmp.init> method in your configuration:
 * timeout: The time interval that a request waits for a response message from an agent.
 
 Now that you have connected to SNMP, use the information in the following topics to perform various operations with the connector:
+
 [Working with SNMP](snmp.md)
