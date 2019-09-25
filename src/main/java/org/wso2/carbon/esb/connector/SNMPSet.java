@@ -43,6 +43,7 @@ import java.io.IOException;
  */
 public class SNMPSet extends AbstractConnector implements Connector {
 	private Snmp snmp;
+	private TransportMapping transport;
 
 	/*
 	 * Connect method which is initiating the Set operation.
@@ -54,7 +55,7 @@ public class SNMPSet extends AbstractConnector implements Connector {
 		String updateOids = (String) messageContext.getProperty(SNMPConstants.UPDATE_OIDS);
 		try {
 			// Create TransportMapping
-			TransportMapping transport = new DefaultUdpTransportMapping();
+			transport = new DefaultUdpTransportMapping();
 			// Create Snmp object for sending data to Agent
 			snmp = new Snmp(transport);
 			// Listens for response
@@ -99,6 +100,7 @@ public class SNMPSet extends AbstractConnector implements Connector {
 			handleException("Error while building the message: " + e.getMessage(), e, messageContext);
 		} finally {
 			try {
+				transport.close();
 				snmp.close();
 			} catch (IOException e) {
 				handleException("Error while closing the SNMP: " + e.getMessage(), e, messageContext);
@@ -138,6 +140,8 @@ public class SNMPSet extends AbstractConnector implements Connector {
 							pdu.add(new VariableBinding(new OID(oid), new Counter32(Integer.parseInt(UpdateValue))));
 						} else if ((type.equalsIgnoreCase(SNMPConstants.COUNTER64))) {
 							pdu.add(new VariableBinding(new OID(oid), new Counter64(Integer.parseInt(UpdateValue))));
+						} else if ((type.equalsIgnoreCase(SNMPConstants.GAUGE32))) {
+							pdu.add(new VariableBinding(new OID(oid), new Gauge32(Integer.parseInt(UpdateValue))));
 						} else {
 							log.warn("Given data Type is empty or wrong.");
 						}
