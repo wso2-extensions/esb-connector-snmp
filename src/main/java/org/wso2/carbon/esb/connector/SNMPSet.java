@@ -43,7 +43,7 @@ import java.io.IOException;
  */
 public class SNMPSet extends AbstractConnector implements Connector {
 	private Snmp snmp;
-	
+	TransportMapping transport;
 
 	/*
 	 * Connect method which is initiating the Set operation.
@@ -53,7 +53,6 @@ public class SNMPSet extends AbstractConnector implements Connector {
 	@Override
 	public void connect(MessageContext messageContext) throws ConnectException {
 		String updateOids = (String) messageContext.getProperty(SNMPConstants.UPDATE_OIDS);
-		TransportMapping transport;
 		try {
 			// Create TransportMapping
 			transport = new DefaultUdpTransportMapping();

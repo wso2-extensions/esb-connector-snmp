@@ -71,8 +71,8 @@ public class SNMPConstants {
 	public static final String COUNTER32 = "counter32";
 	// Constant for counter64.
 	public static final String COUNTER64 = "counter64";
-        // Constant for Gauge32.
-         public static final String GAUGE32 = "Gauge32";
+	// Constant for Gauge32.
+	public static final String GAUGE32 = "Gauge32";
 	// Constant for default retries.
 	public static final String DEFAULT_RETRIES = "5";
 	// Constant for default time out.
