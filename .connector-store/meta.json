@@ -1,0 +1,20 @@
+{
+    "name": "SNMP",
+    "owner": "WSO2",
+    "category": "Other",
+    "documentationUrl": "https://github.com/wso2-extensions/esb-connector-snmp/blob/1.0.2/README.md",
+    "description": "The SNMP connector allows you to monitor and configure network components such as servers, routers, switches or printers via WSO2 ESB. This connector supports Simple Network Management Protocol(SNMP) Version 2, and uses the snmp4j library, which is an enterprise class free open source SNMP implementation for Java™ SE.",
+    "status": "Active",
+    "labels": [
+        "connector"
+    ],
+    "releases": [
+        {
+            "tag_name": "v1.0.2",
+            "products": [
+                "\"EI 6.5.0\""
+            ],
+            "isHidden": false
+        }
+    ]
+}
